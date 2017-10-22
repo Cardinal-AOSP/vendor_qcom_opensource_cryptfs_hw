@@ -9,15 +9,19 @@ commonSharedLibraries := \
                         libcutils \
                         libutils \
                         libdl \
-                        libhardware
+                        libhardware \
+                        liblog
 commonIncludes := \
-                  hardware/libhardware/include/hardware/
+                  hardware/libhardware/include/hardware/ \
+                  $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
+
+LOCAL_ADDITIONAL_DEPENDENCIES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 
 LOCAL_C_INCLUDES := $(commonIncludes)
 LOCAL_SRC_FILES := $(sourceFiles)
 
 LOCAL_MODULE_TAGS       := optional
-LOCAL_MODULE:= libcryptfs_hw
+LOCAL_MODULE := libcryptfs_hw
 LOCAL_SHARED_LIBRARIES := $(commonSharedLibraries)
 
 LOCAL_MODULE_OWNER := qcom
